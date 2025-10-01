@@ -10,11 +10,7 @@ def readHosts():
             lines = f.readlines()
         Log = core.Log(level=core.Log.Info , message = "Hosts file read successfully")
         return lines
-    elif platform.system() == "Linux" or platform.system() == "Darwin":
-        with open("/etc/hosts", 'r' ,encoding="utf-8") as f:
-            lines = f.readlines()
-        Log = core.Log(level=core.Log.Info , message = "Hosts file read successfully")
-        return lines
+
     else:
         Log = core.Log(level=core.Log.Error , message = "Unsupported OS")
     
