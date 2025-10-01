@@ -1,1 +1,1 @@
-g++ -o lib lib.cpp
+g++ -m32 -shared -o lib.dll lib.cpp
