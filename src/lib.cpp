@@ -6,10 +6,6 @@
 
 extern "C"{ 
 
-    __declspec(dllexport) int add(int a, int b) {
-        return a + b;
-    };
-
     __declspec(dllexport) double getDiskFreeSpace(const char* path, const char* mode) {
         ULARGE_INTEGER freeBytesAvailable, totalNumberOfBytes, totalNumberOfFreeBytes;
 

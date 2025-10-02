@@ -2,7 +2,8 @@ import os
 import core
 import platform
 
-def readHosts():
+def readHosts() -> list:
+    """ 读取hosts文件 """
     Log = core.Log(level=core.Log.Info , message = "Reading hosts file")
     Log.log()
     if platform.system() == "Windows":
@@ -16,6 +17,19 @@ def readHosts():
     
     Log.log()
 
+def getHostsDict() -> dict:
+    """ 获取hosts文件字典 """
+    lines = readHosts()
+    hostsDict = {}
+    for line in lines:
+        if line.startswith("#") or line == "":
+            continue
+        else:
+            host = line.split(" ")[1]
+            ip = line.split(" ")[0]
+            hostsDict[host] = ip
+    return hostsDict
+
 
 
 if __name__ == '__main__':
@@ -23,4 +37,6 @@ if __name__ == '__main__':
     for line in lines:
         print(line)
     
+    print(getHostsDict())
+
     print(platform.system())
