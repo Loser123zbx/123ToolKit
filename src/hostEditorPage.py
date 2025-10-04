@@ -163,7 +163,7 @@ class main ( wx.Frame ):
 		root = wx.BoxSizer(wx.HORIZONTAL)
 
 		itemsChoices = []
-		self.items = wx.ListBox(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, itemsChoices, wx.LB_MULTIPLE)
+		self.items = wx.ListBox(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, itemsChoices, wx.LB_ALWAYS_SB|wx.LB_HSCROLL|wx.LB_MULTIPLE)
 		self.items.SetTransparent(CONTROL_TRANSPARENCY)
 		root.Add(self.items, 1, wx.ALL|wx.EXPAND, 5)
 
@@ -181,9 +181,9 @@ class main ( wx.Frame ):
 		self.block.SetTransparent(CONTROL_TRANSPARENCY)
 		tools.Add(self.block, 0, wx.EXPAND, 5)
 
-		self.m_checkBox1 = wx.CheckBox(self, wx.ID_ANY, _(u"在选择框显示对应IP"), wx.DefaultPosition, wx.DefaultSize, 0)
-		self.m_checkBox1.SetTransparent(CONTROL_TRANSPARENCY)
-		tools.Add(self.m_checkBox1, 0, wx.ALL, 5)
+		self.showIp = wx.CheckBox(self, wx.ID_ANY, _(u"在选择框显示对应IP"), wx.DefaultPosition, wx.DefaultSize, 0)
+		self.showIp.SetTransparent(CONTROL_TRANSPARENCY)
+		tools.Add(self.showIp, 0, wx.ALL, 5)
 
 		self.choseingItem = wx.StaticText(self, wx.ID_ANY, _(u"选中项:"), wx.DefaultPosition, wx.DefaultSize, 0)
 		self.choseingItem.SetTransparent(CONTROL_TRANSPARENCY)
@@ -212,7 +212,21 @@ class main ( wx.Frame ):
 
 		self.delete.Bind(wx.EVT_BUTTON, self.onDelete)
 
+		self.showIp.Bind(wx.EVT_CHECKBOX, self.onShowIp)
 
+	def onShowIp(self, event):
+		"""
+		显示IP
+		- 如果选中则显示IP
+		- 否则不显示
+		"""
+		if not self.showIp.GetValue():
+			self.items.SetItems(host)
+		else:
+			self.items.SetItems([])
+			for i in range(len(host)):
+				self.items.Append(host[i] + " : " + ip[i])
+		self.Refresh()
 
 
 	def onSelect(self, event):
@@ -257,7 +271,7 @@ class main ( wx.Frame ):
 		self.blockHost.ShowModal()
 		self.blockHost.Destroy()
 		readHosts()
-		self.Refresh()
+		self.Refresh#]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]\\'[][;plkjhgfdsdftghjklkjhgfdsaQASDFGHJK				self.Refresh()0-]
 
 	def onDelete(self, event):
 		"""

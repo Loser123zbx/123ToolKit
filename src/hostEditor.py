@@ -30,7 +30,7 @@ def getHostsDict() -> dict:
             # 去除 BOM 和首尾空白
             line:str = line.strip().lstrip('\ufeff')
 
-            if line.startswith("#") or line == "":
+            if line == "":
                 _log = Log(level=core.Log.Info , message = f"Comment line: {line}")
                 _log.log()
                 continue
