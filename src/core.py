@@ -14,7 +14,7 @@ class Log:
         self.level = level
         self.message = message
     
-    def log(self):
+    def log(self) -> None:
         if self.level == Log.Error :
             print("[Error] " + self.message)
         elif self.level == Log.Warning :
