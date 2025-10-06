@@ -3,6 +3,8 @@
 #include <cstring> // 用于strcmp函数
 #include <winioctl.h>
 #include <vector>
+#include <strsafe.h>
+#pragma comment(lib, "User32.lib")
 
 extern "C"{ 
 
@@ -42,7 +44,7 @@ extern "C"{
         //将B转换到TiB
         return size / (1024.0 * 1024.0 * 1024.0 * 1024.0);
     };
-}
+};
 
 int main() {
     std::cout << "Hello World!" << std::endl;

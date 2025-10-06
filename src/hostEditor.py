@@ -15,7 +15,7 @@ def readHosts() -> list:
         _log = Log(level=core.Log.Info , message = "Hosts file read successfully")
         return lines
 
-    else:
+    else: 
         _Log = Log(level=core.Log.Error , message = "Unsupported OS")
     
     _log.log()
